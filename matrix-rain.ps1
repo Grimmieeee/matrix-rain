@@ -1,73 +1,68 @@
 # matrix-rain.ps1
-# CYBERPUNK MATRIX RAIN - ULTIMATE VERSION
-# HUD Overlay + Intense Colors + GET WREKT Messages
+# CYBERPUNK MATRIX RAIN - CINEMATIC HEAVY RAIN VERSION
+# Retro cyberpunk boot sequence + dense cascading rain
 # Press Ctrl+C to exit
 
 $ErrorActionPreference = 'SilentlyContinue'
 
-try {
-    $host.UI.RawUI.WindowTitle = "[ ▀▄ ▄▀ CYBERPUNK MATRIX RAIN v6.6 ▀▄ ▄▀ ]"
-} catch {}
-
-try {
-    $host.UI.RawUI.CursorVisible = $false
-} catch {}
+try { $host.UI.RawUI.WindowTitle = "[ CYBERPUNK // MATRIX RAIN ]" } catch {}
+try { $host.UI.RawUI.CursorVisible = $false } catch {}
 
 [Console]::BackgroundColor = [ConsoleColor]::Black
 [Console]::ForegroundColor = [ConsoleColor]::Green
 Clear-Host
 
 # ============================================================================
-# AGGRESSIVE BOOT SEQUENCE
+# CINEMATIC BOOT SEQUENCE
 # ============================================================================
 function Show-BootSequence {
-    Write-Host "`n" -NoNewline
+    Write-Host ""
+    Start-Sleep -Milliseconds 200
     
-    $bootMessages = @(
-        @{msg = "╔════════════════════════════════════════════════════════════╗"; color = "Magenta"},
-        @{msg = "║              CYBERPUNK MATRIX RAIN v6.6                    ║"; color = "Magenta"},
-        @{msg = "║             [NEURAL ENGINE // HUD ENABLED]                 ║"; color = "Magenta"},
-        @{msg = "╚════════════════════════════════════════════════════════════╝"; color = "Magenta"},
-        @{msg = ""; color = "Black"},
-        @{msg = "[BOOT] Initializing neural matrix processor..."; color = "Green"},
-        @{msg = "[BOOT] Cobalt resonance module: ONLINE"; color = "Cyan"},
-        @{msg = "[BOOT] Dark green decay kernel: LOADED"; color = "DarkGreen"},
-        @{msg = "[BOOT] Magenta neon pathway: ACTIVATED"; color = "Magenta"},
-        @{msg = "[SYS]  Terminal dimensions: $($host.UI.RawUI.WindowSize.Width)x$($host.UI.RawUI.WindowSize.Height)"; color = "Cyan"},
-        @{msg = "[SYS]  Quantum entanglement cipher: ACTIVE"; color = "DarkMagenta"},
-        @{msg = "[SYS]  Glitch buffer size: 2048 MB"; color = "Green"},
-        @{msg = "[ERR]  [GLITCH-0x7F] Temporal anomaly detected"; color = "Red"},
-        @{msg = "[ERR]  >> GET WREKT MODE ENGAGED"; color = "Magenta"},
-        @{msg = "[SYS]  HUD overlay: RENDERING"; color = "Yellow"},
-        @{msg = "[SYS]  Scanline engine: TURBO MODE"; color = "Yellow"},
-        @{msg = "[SYS]  Rain matrix: CASCADING"; color = "Green"},
-        @{msg = ""; color = "Black"},
-        @{msg = "▀▄ ▄▀ ▄▀▀▀▄ ▀▀█▀▀ ▄▀▀▀▀▄ █  █ █    █ ▄▀▀▀▄"; color = "Magenta"},
-        @{msg = "█ █ █ █   █   █   █      █▀▀▀  █    █ █   █"; color = "Cyan"},
-        @{msg = "█ █ █ █   █   █   █  ▄▄▄ █     █    █ █   █"; color = "DarkGreen"},
-        @{msg = "█ █ █ █   █   █   █     █ █    █    █ █   █"; color = "Magenta"},
-        @{msg = "█ █ █ █   █   █   █      █  █   ▀▀▀▀  ▀▀▀▀"; color = "Cyan"},
-        @{msg = ""; color = "Black"},
-        @{msg = "        ▀▀▀▀▀▀▀▀ GET WREKT MODE ACTIVATED ▀▀▀▀▀▀▀▀"; color = "Red"},
-        @{msg = ""; color = "Black"},
-        @{msg = "[READY] HUD rain sequence initializing..."; color = "Green"},
-        @{msg = "[READY] ENTERING CYBERSPACE IN: 3..."; color = "Magenta"}
+    $lines = @(
+        @{ text = "╔════════════════════════════════════════════════════════════╗"; color = "DarkMagenta"; delay = 60 },
+        @{ text = "║                                                            ║"; color = "DarkMagenta"; delay = 40 },
+        @{ text = "║          ▄▀  ▀▄    █▀▀▀█   ▀▀█▀▀   █▀▀▀  █▀▀▀█          ║"; color = "Green"; delay = 80 },
+        @{ text = "║          █    █    █       █      █      █              ║"; color = "Cyan"; delay = 80 },
+        @{ text = "║          █    █    █▀▀▀    █      █▀▀▀  █▀▀▀█          ║"; color = "Magenta"; delay = 80 },
+        @{ text = "║          █    █    █       █      █      █              ║"; color = "Green"; delay = 80 },
+        @{ text = "║          ▀▀  ▀▀    █       █      █▀▀▀  █              ║"; color = "Cyan"; delay = 80 },
+        @{ text = "║                                                            ║"; color = "DarkMagenta"; delay = 40 },
+        @{ text = "║                    NEURAL RAIN ENGINE v7.2                ║"; color = "Magenta"; delay = 100 },
+        @{ text = "║                                                            ║"; color = "DarkMagenta"; delay = 40 },
+        @{ text = "╚════════════════════════════════════════════════════════════╝"; color = "DarkMagenta"; delay = 60 },
+        @{ text = ""; color = "Black"; delay = 150 },
+        @{ text = "[████████████████████████████] NEURAL KERNEL BOOT"; color = "Green"; delay = 120 },
+        @{ text = "[████████████████████████████] COBALT PATHWAY SYNC"; color = "Cyan"; delay = 120 },
+        @{ text = "[████████████████████████████] MAGENTA NEON INIT"; color = "Magenta"; delay = 120 },
+        @{ text = "[████████████████████████████] DARK GREEN DECAY LOAD"; color = "DarkGreen"; delay = 120 },
+        @{ text = ""; color = "Black"; delay = 100 },
+        @{ text = "[••] RAIN MATRIX PROTOCOL ENGAGED"; color = "Green"; delay = 100 },
+        @{ text = "[••] SCANLINE FLICKER READY"; color = "Cyan"; delay = 100 },
+        @{ text = "[••] GLITCH ARTIFACTS PRIMED"; color = "Magenta"; delay = 100 },
+        @{ text = "[••] TEMPORAL CASCADE ACTIVE"; color = "DarkMagenta"; delay = 100 },
+        @{ text = ""; color = "Black"; delay = 150 },
+        @{ text = "╔════════════════════════════════════════════════════════════╗"; color = "Magenta"; delay = 60 },
+        @{ text = "║                  ENTERING CYBERSPACE IN...                 ║"; color = "Magenta"; delay = 100 },
+        @{ text = "╚════════════════════════════════════════════════════════════╝"; color = "Magenta"; delay = 60 },
+        @{ text = ""; color = "Black"; delay = 200 }
     )
 
-    foreach ($item in $bootMessages) {
-        [Console]::ForegroundColor = [ConsoleColor]::($item.color)
-        Write-Host $item.msg
-        Start-Sleep -Milliseconds 110
+    foreach ($line in $lines) {
+        [Console]::ForegroundColor = [ConsoleColor]::($line.color)
+        Write-Host $line.text
+        Start-Sleep -Milliseconds $line.delay
     }
 
-    Start-Sleep -Milliseconds 300
-    Write-Host "[READY] 2..." -ForegroundColor Cyan
-    Start-Sleep -Milliseconds 400
-    Write-Host "[READY] 1..." -ForegroundColor Magenta
-    Start-Sleep -Milliseconds 400
-    
-    Write-Host "`n>>> NEURAL PATHWAYS SYNCED <<<`n" -ForegroundColor Magenta
-    Start-Sleep -Milliseconds 300
+    # Countdown
+    @(3, 2, 1) | ForEach-Object {
+        Write-Host "                         [ $_ ]                          " -ForegroundColor Magenta
+        Start-Sleep -Milliseconds 400
+    }
+
+    Write-Host ""
+    Write-Host "                  ▀▀▀ RAIN SEQUENCE INITIATED ▀▀▀             " -ForegroundColor Cyan
+    Start-Sleep -Milliseconds 500
     
     Clear-Host
 }
@@ -78,285 +73,173 @@ $cols = $host.UI.RawUI.WindowSize.Width
 $rows = $host.UI.RawUI.WindowSize.Height
 
 # ============================================================================
-# MATRIX GLYPHS - EXTENDED CYBERPUNK
+# GLYPHS
 # ============================================================================
-$glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン@#$*+?/%<>!^&|~`ÆØÅ▓▒░█▀▄▌▐╲╱"
+$glyphs = "ｦｱｳｴｵｶｷｸｹｺｻｼｽｾﾀﾁﾂﾃﾅﾆﾇﾈﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾗﾘﾙﾚﾜ"
 $glyphsLen = $glyphs.Length
 
-# Column state - INCREASED DENSITY
-$head = New-Object int[] $cols
-$length = New-Object int[] $cols
-$speed = New-Object int[] $cols
-$color = New-Object object[] $cols
-
+# ============================================================================
+# RAIN STATE - OPTIMIZED FOR DENSITY
+# ============================================================================
+$rainColumns = @()
 for ($i = 0; $i -lt $cols; $i++) {
-    $head[$i] = -1
-    $length[$i] = 0
-    $speed[$i] = Get-Random -Minimum 1 -Maximum 2
-    $color[$i] = @("Green", "Magenta", "Cobalt")[(Get-Random -Minimum 0 -Maximum 3)]
-}
-
-# GET WREKT state
-$getWrektActive = $false
-$getWrektFrame = 0
-$getWrektX = 0
-$getWrektY = 0
-
-# HUD stats
-$frameCount = 0
-$packetsSent = 0
-$dataFlow = 0
-
-# ============================================================================
-# COLOR PALETTE - EXTREME CYBERPUNK
-# ============================================================================
-$colorPalette = @{
-    "head"         = [ConsoleColor]::White        # Blazing white apex
-    "cobalt"       = [ConsoleColor]::Cyan         # Pure cobalt blue
-    "magenta"      = [ConsoleColor]::Magenta      # Intense magenta
-    "darkmagenta"  = [ConsoleColor]::DarkMagenta # Deep magenta
-    "green"        = [ConsoleColor]::Green        # Bright neon green
-    "darkgreen"    = [ConsoleColor]::DarkGreen    # Dark green decay
-    "yellow"       = [ConsoleColor]::Yellow       # Glitch yellow
-    "darkyellow"   = [ConsoleColor]::DarkYellow   # Dim yellow
-    "red"          = [ConsoleColor]::Red          # Alert red
-}
-
-# ============================================================================
-# RENDERING FUNCTIONS
-# ============================================================================
-function Set-Cell {
-    param(
-        [int]$x,
-        [int]$y,
-        [string]$char,
-        [ConsoleColor]$color
-    )
-
-    if ($x -lt 0 -or $y -lt 0 -or $x -ge $cols -or $y -ge $rows) {
-        return
+    $rainColumns += @{
+        x      = $i
+        y      = -1
+        length = 0
+        speed  = Get-Random -Minimum 1 -Maximum 2
+        kind   = @("green", "magenta", "cobalt")[(Get-Random -Minimum 0 -Maximum 3)]
+        active = $false
     }
+}
 
+# ============================================================================
+# RENDERING
+# ============================================================================
+function SetCell {
+    param([int]$x, [int]$y, [string]$ch, [ConsoleColor]$col)
+    if ($x -lt 0 -or $y -lt 0 -or $x -ge $cols -or $y -ge $rows) { return }
     try {
         [Console]::SetCursorPosition($x, $y)
-        Write-Host $char -NoNewline -ForegroundColor $color -BackgroundColor Black
+        Write-Host $ch -NoNewline -ForegroundColor $col -BackgroundColor Black
     } catch {}
 }
 
-function Draw-HudBorders {
-    # Top border
-    Set-Cell -x 0 -y 0 -char "█" -color $colorPalette["magenta"]
-    for ($x = 1; $x -lt $cols - 1; $x++) {
-        Set-Cell -x $x -y 0 -char "━" -color $colorPalette["cobalt"]
-    }
-    Set-Cell -x ($cols - 1) -y 0 -char "█" -color $colorPalette["magenta"]
-
-    # Bottom border
-    Set-Cell -x 0 -y ($rows - 1) -char "█" -color $colorPalette["magenta"]
-    for ($x = 1; $x -lt $cols - 1; $x++) {
-        Set-Cell -x $x -y ($rows - 1) -char "━" -color $colorPalette["green"]
-    }
-    Set-Cell -x ($cols - 1) -y ($rows - 1) -char "█" -color $colorPalette["magenta"]
-
-    # Left border
-    for ($y = 1; $y -lt $rows - 1; $y++) {
-        Set-Cell -x 0 -y $y -char "█" -color $colorPalette["darkmagenta"]
-    }
-
-    # Right border
-    for ($y = 1; $y -lt $rows - 1; $y++) {
-        Set-Cell -x ($cols - 1) -y $y -char "█" -color $colorPalette["darkmagenta"]
-    }
-}
-
-function Draw-HudStats {
-    $packetsSent = ($frameCount / 2)
-    $dataFlow = (Get-Random -Minimum 1200 -Maximum 9999)
-    
-    $statLine1 = "[PKT: $([int]$packetsSent)] [FLOW: $($dataFlow) MB/s] [STATUS: ACTIVE]"
-    $statLine2 = "[CPU: $(Get-Random -Minimum 45 -Maximum 99)%] [MEM: $(Get-Random -Minimum 60 -Maximum 95)%] [HUD: ONLINE]"
-    
-    # Top-left stats
-    if ($statLine1.Length -lt $cols - 2) {
-        for ($i = 0; $i -lt $statLine1.Length; $i++) {
-            Set-Cell -x ($i + 1) -y 1 -char $statLine1[$i] -color $colorPalette["green"]
-        }
-    }
-
-    # Bottom-left stats
-    if ($statLine2.Length -lt $cols - 2) {
-        for ($i = 0; $i -lt $statLine2.Length; $i++) {
-            Set-Cell -x ($i + 1) -y ($rows - 2) -char $statLine2[$i] -color $colorPalette["cobalt"]
+function ClearScreen {
+    for ($y = 0; $y -lt $rows; $y++) {
+        for ($x = 0; $x -lt $cols; $x++) {
+            SetCell -x $x -y $y -ch " " -col ([ConsoleColor]::Black)
         }
     }
 }
 
-function Draw-Scanlines {
-    # Aggressive scanline flicker
-    if ((Get-Random -Minimum 0 -Maximum 100) -lt 35) {
-        $scanlineY = Get-Random -Minimum 2 -Maximum ($rows - 2)
-        $scanChars = @("━", "▬", "─", "▭", "═", "▓", "░")
-        $char = $scanChars[(Get-Random -Minimum 0 -Maximum $scanChars.Length)]
-        
-        for ($x = 1; $x -lt $cols - 1; $x += Get-Random -Minimum 1 -Maximum 3) {
-            $scanColor = @($colorPalette["darkmagenta"], $colorPalette["darkyellow"], $colorPalette["yellow"])[(Get-Random -Minimum 0 -Maximum 3)]
-            Set-Cell -x $x -y $scanlineY -char $char -color $scanColor
-        }
-    }
-}
-
-function Draw-GlitchBursts {
-    # INTENSE glitch artifacts
-    if ((Get-Random -Minimum 0 -Maximum 100) -lt 6) {
-        $glitchY = Get-Random -Minimum 2 -Maximum ($rows - 2)
-        $glitchX = Get-Random -Minimum 1 -Maximum ($cols - 20)
-        $glitchLen = Get-Random -Minimum 12 -Maximum 30
-        
-        $glitchColor = @($colorPalette["magenta"], $colorPalette["cobalt"], $colorPalette["red"], $colorPalette["darkmagenta"])[(Get-Random -Minimum 0 -Maximum 4)]
-
-        for ($i = 0; $i -lt $glitchLen; $i++) {
-            if ($glitchX + $i -lt $cols - 1) {
-                $char = $glyphs[(Get-Random -Minimum 0 -Maximum ($glyphsLen - 1))]
-                Set-Cell -x ($glitchX + $i) -y $glitchY -char $char -color $glitchColor
-            }
-        }
-    }
-}
-
-function Draw-GetWrekt {
-    # Spawn GET WREKT message randomly
-    if ((Get-Random -Minimum 0 -Maximum 100) -lt 3 -and -not $getWrektActive) {
-        $getWrektActive = $true
-        $getWrektFrame = 0
-        $getWrektX = Get-Random -Minimum 10 -Maximum ($cols - 15)
-        $getWrektY = Get-Random -Minimum 3 -Maximum ($rows - 5)
-    }
-
-    if ($getWrektActive) {
-        $msg = "GET WREKT"
-        $fadeOut = [Math]::Max(0, 40 - $getWrektFrame)
-        
-        # Render with color intensity based on fade
-        $renderColor = if ($fadeOut -gt 25) {
-            $colorPalette["red"]
-        } elseif ($fadeOut -gt 12) {
-            $colorPalette["magenta"]
-        } else {
-            $colorPalette["darkmagenta"]
-        }
-
-        for ($i = 0; $i -lt $msg.Length; $i++) {
-            if ($getWrektX + $i -lt $cols - 1) {
-                Set-Cell -x ($getWrektX + $i) -y $getWrektY -char $msg[$i] -color $renderColor
-            }
-        }
-
-        $getWrektFrame++
-        if ($getWrektFrame -ge 45) {
-            $getWrektActive = $false
-        }
-    }
-}
-
-function Draw-Frame {
-    # Clear interior
-    for ($y = 1; $y -lt $rows - 1; $y++) {
-        for ($x = 1; $x -lt $cols - 1; $x++) {
-            Set-Cell -x $x -y $y -char " " -color ([ConsoleColor]::Black)
-        }
-    }
-
-    # Draw rain columns - MUCH MORE AGGRESSIVE SPAWNING
-    for ($x = 1; $x -lt $cols - 1; $x++) {
-        if ($head[$x] -lt 0) {
-            # Increased spawn rate from 11% to 25% for denser rain
-            if ((Get-Random -Minimum 0 -Maximum 100) -lt 25) {
-                $head[$x] = 2
-                $length[$x] = Get-Random -Minimum 15 -Maximum 45
-                $speed[$x] = Get-Random -Minimum 1 -Maximum 2
-                $color[$x] = @("Green", "Magenta", "Cobalt")[(Get-Random -Minimum 0 -Maximum 3)]
+function DrawRain {
+    foreach ($col in $rainColumns) {
+        # Spawn new rain
+        if (-not $col.active) {
+            if ((Get-Random -Minimum 0 -Maximum 100) -lt 35) {
+                $col.active = $true
+                $col.y = 0
+                $col.length = Get-Random -Minimum 18 -Maximum 50
+                $col.speed = Get-Random -Minimum 1 -Maximum 2
+                $col.kind = @("green", "magenta", "cobalt")[(Get-Random -Minimum 0 -Maximum 3)]
             }
             continue
         }
 
-        $top = $head[$x]
-        $trailStart = $top - $length[$x]
+        # Draw column trail
+        $trailStart = $col.y - $col.length
+        for ($ty = $trailStart; $ty -le $col.y; $ty++) {
+            if ($ty -lt 0 -or $ty -ge $rows) { continue }
 
-        if ($top -ge $rows - 1) {
-            $head[$x] = -1
-            $length[$x] = 0
-            continue
-        }
+            $dist = $col.y - $ty
+            $glyph = $glyphs[(Get-Random -Minimum 0 -Maximum ($glyphsLen - 1))]
 
-        # Draw trail with intense gradients
-        for ($y = $trailStart; $y -le $top; $y++) {
-            if ($y -lt 1 -or $y -ge $rows - 1) { continue }
-
-            $dist = $top - $y
-            $char = $glyphs[(Get-Random -Minimum 0 -Maximum ($glyphsLen - 1))]
-
-            # White hot apex
+            # Head - bright white
             if ($dist -eq 0) {
-                Set-Cell -x $x -y $y -char $char -color $colorPalette["head"]
+                SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::White)
             }
             # Inner glow
-            elseif ($dist -lt 2) {
-                if ($color[$x] -eq "Magenta") {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["magenta"]
-                } elseif ($color[$x] -eq "Cobalt") {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["cobalt"]
-                } else {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["green"]
+            elseif ($dist -lt 4) {
+                if ($col.kind -eq "magenta") {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::Magenta)
+                }
+                elseif ($col.kind -eq "cobalt") {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::Cyan)
+                }
+                else {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::Green)
                 }
             }
-            # Mid-trail
-            elseif ($dist -lt 8) {
-                if ($color[$x] -eq "Magenta") {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["magenta"]
-                } elseif ($color[$x] -eq "Cobalt") {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["cobalt"]
-                } else {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["green"]
+            # Mid trail
+            elseif ($dist -lt 12) {
+                if ($col.kind -eq "magenta") {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::Magenta)
+                }
+                elseif ($col.kind -eq "cobalt") {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::DarkCyan)
+                }
+                else {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::Green)
                 }
             }
-            # Decay trail
-            elseif ($dist -lt 16) {
-                if ($color[$x] -eq "Magenta") {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["darkmagenta"]
-                } elseif ($color[$x] -eq "Cobalt") {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["darkyellow"]
-                } else {
-                    Set-Cell -x $x -y $y -char $char -color $colorPalette["darkgreen"]
+            # Decay
+            elseif ($dist -lt 20) {
+                if ($col.kind -eq "magenta") {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::DarkMagenta)
+                }
+                elseif ($col.kind -eq "cobalt") {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::DarkGray)
+                }
+                else {
+                    SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::DarkGreen)
                 }
             }
-            # Dark fade
+            # Fade
             else {
-                Set-Cell -x $x -y $y -char $char -color $colorPalette["darkgreen"]
+                SetCell -x $col.x -y $ty -ch $glyph -col ([ConsoleColor]::DarkGreen)
             }
         }
 
-        $head[$x] += $speed[$x]
+        # Move down
+        $col.y += $col.speed
+
+        # Reset if off screen
+        if ($col.y -ge $rows) {
+            $col.active = $false
+            $col.y = -1
+            $col.length = 0
+        }
     }
+}
 
-    # Draw HUD elements
-    Draw-HudBorders
-    Draw-HudStats
-    Draw-Scanlines
-    Draw-GlitchBursts
-    Draw-GetWrekt
+function DrawScanlines {
+    if ((Get-Random -Minimum 0 -Maximum 100) -lt 32) {
+        $scanY = Get-Random -Minimum 0 -Maximum $rows
+        $scanChars = @("━", "▬", "─", "═", "═", "═")
+        $char = $scanChars[(Get-Random -Minimum 0 -Maximum $scanChars.Length)]
 
-    $frameCount++
+        for ($x = 0; $x -lt $cols; $x += (Get-Random -Minimum 1 -Maximum 3)) {
+            $col = if ((Get-Random -Minimum 0 -Maximum 2) -eq 0) { [ConsoleColor]::DarkMagenta } else { [ConsoleColor]::DarkGray }
+            SetCell -x $x -y $scanY -ch $char -col $col
+        }
+    }
+}
+
+function DrawGlitches {
+    if ((Get-Random -Minimum 0 -Maximum 100) -lt 5) {
+        $glitchX = Get-Random -Minimum 0 -Maximum ($cols - 15)
+        $glitchY = Get-Random -Minimum 0 -Maximum $rows
+        $glitchLen = Get-Random -Minimum 10 -Maximum 25
+
+        $glitchCol = @([ConsoleColor]::Magenta, [ConsoleColor]::Cyan, [ConsoleColor]::DarkMagenta)[(Get-Random -Minimum 0 -Maximum 3)]
+
+        for ($i = 0; $i -lt $glitchLen; $i++) {
+            if ($glitchX + $i -lt $cols) {
+                $ch = $glyphs[(Get-Random -Minimum 0 -Maximum ($glyphsLen - 1))]
+                SetCell -x ($glitchX + $i) -y $glitchY -ch $ch -col $glitchCol
+            }
+        }
+    }
+}
+
+function DrawFrame {
+    ClearScreen
+    DrawRain
+    DrawScanlines
+    DrawGlitches
 }
 
 # ============================================================================
 # MAIN LOOP
 # ============================================================================
-Write-Host "[ACTIVE] Neural HUD matrix rain running..." -ForegroundColor Green
-Write-Host "[INFO]  Press Ctrl+C to terminate" -ForegroundColor Cyan
-Start-Sleep -Milliseconds 500
+Write-Host "[SYSTEM] Rain matrix online..." -ForegroundColor Green
+Write-Host "[SYSTEM] Cascade density: MAXIMUM" -ForegroundColor Cyan
+Write-Host "[SYSTEM] Press Ctrl+C to terminate" -ForegroundColor Magenta
+Start-Sleep -Milliseconds 800
 Clear-Host
 
 while ($true) {
-    Draw-Frame
-    Start-Sleep -Milliseconds 45
+    DrawFrame
+    Start-Sleep -Milliseconds 40
 }
